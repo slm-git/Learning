@@ -13,12 +13,14 @@
 @interface ViewController ()
 @property (nonatomic) CardMatchingGame *game;
 @property (nonatomic) BOOL started;
+@property (nonatomic) NSMutableArray *history;
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIButton *startNewGameButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameTypeControl;
+@property (weak, nonatomic) IBOutlet UISlider *histSlider;
 @end
 
 @implementation ViewController
@@ -29,6 +31,13 @@
                                                   usingDeck:[self createDeck]];
     }
     return _game;
+}
+
+- (NSMutableArray *)history {
+    if (!_history) {
+        _history = [[NSMutableArray alloc] init];
+    }
+    return _history;
 }
 
 - (Deck *)createDeck {
@@ -106,6 +115,7 @@
         [status appendFormat:@"matched for %ld points.", (long)points];
     }
     
+    [self.history addObject:status];
     return status;
 }
 
@@ -119,10 +129,26 @@
         cardButton.enabled = !card.isMatched;
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
     }
+    
+    // updating the status as the result of a touch means we're no longer
+    // viewing history
+    self.resultLabel.alpha = 1.0;
+    self.histSlider.value = 0.96;
     self.resultLabel.text = [self buildStatus];
     
     // user is allowd to toggle the game type only if a game hasn't started
     self.gameTypeControl.enabled = !self.started;
+}
+
+// when the slider is moved display the history of the game in the status field
+- (IBAction)historySlider:(UISlider *)sender {
+    int index = sender.value * [self.history count];
+
+    if ([self.history count]) {
+        // gray out the text to indicate it's history
+        self.resultLabel.alpha = 0.5;
+        self.resultLabel.text = [self.history objectAtIndex:index];
+    }
 }
 
 - (NSString *)titleForCard:(Card *)card {

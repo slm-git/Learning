@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "stanford.png"
+      "filename" : "wsu64x96.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "stanford-tree.png"
+      "filename" : "wsu128x192.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "stanford-tree-1.png"
+      "filename" : "wsu192x288.png"
     }
   ],
   "info" : {

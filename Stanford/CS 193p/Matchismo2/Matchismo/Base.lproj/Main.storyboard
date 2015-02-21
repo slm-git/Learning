@@ -419,7 +419,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pYo-df-mwB">
-                                <rect key="frame" x="46" y="438" width="221" height="29"/>
+                                <rect key="frame" x="16" y="437" width="179" height="29"/>
                                 <segments>
                                     <segment title="Two Cards"/>
                                     <segment title="Three Cards"/>
@@ -435,8 +435,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="0.95999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="zKd-CG-l7e">
+                                <rect key="frame" x="97" y="479" width="118" height="31"/>
+                                <connections>
+                                    <action selector="historySlider:" destination="vXZ-lx-hvc" eventType="valueChanged" id="E5Y-yt-aKd"/>
+                                </connections>
+                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kfs-nv-TTd">
-                                <rect key="frame" x="112" y="486" width="88" height="30"/>
+                                <rect key="frame" x="208" y="436" width="88" height="30"/>
                                 <state key="normal" title="New Game" backgroundImage="cardFront">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -450,6 +456,7 @@
                     </view>
                     <connections>
                         <outlet property="gameTypeControl" destination="pYo-df-mwB" id="DOe-4W-N4D"/>
+                        <outlet property="histSlider" destination="zKd-CG-l7e" id="He6-q6-W4g"/>
                         <outlet property="resultLabel" destination="XwL-hC-Lu0" id="6Xa-HH-rQt"/>
                         <outlet property="scoreLabel" destination="pWc-fe-f0t" id="eVh-xr-2qb"/>
                         <outlet property="startNewGameButton" destination="Kfs-nv-TTd" id="3Nq-JT-Amm"/>
@@ -512,7 +519,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NsV-bX-5Al" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-418" y="96"/>
+            <point key="canvasLocation" x="-596" y="110"/>
         </scene>
     </scenes>
     <resources>
