@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
 
 @interface ViewController ()
@@ -40,8 +39,9 @@
     return _history;
 }
 
+// subclasses must implement
 - (Deck *)createDeck {
-    return [[PlayingCardDeck alloc] init];
+    return nil;
 }
 
 - (IBAction)touchGameSelector:(UISegmentedControl *)sender {
